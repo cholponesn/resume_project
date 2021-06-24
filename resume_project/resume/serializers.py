@@ -11,7 +11,7 @@ class PersonalinfoSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Personalinfo
-        fields = '__all__'
+        exclude = ['resume']
 
 
 
@@ -19,12 +19,12 @@ class EducationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Education
-        fields = '__all__'
+        exclude = ['resume']
 
 class ExperienceSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Experience
-        fields = '__all__'
+        exclude = ['resume']
 
 
