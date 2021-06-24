@@ -18,6 +18,7 @@ class PersonalinfoTest(APITestCase):
              "full_name": "cholpon",
              "email":"cholpon@gmail.com",
              "date_birth":"2020-07-05",
+             "phone": 703162913,
              "address":"babaeva 60",
              "bio":"hghghgh"
          }
@@ -35,7 +36,7 @@ class EducationTest(APITestCase):
     def test_education_ok(self):
         data = {"start_year": 2015,
                 "end_year": 2018,
-                "school_name": "Academy of tourism",
+                "school_name": "Academy",
                 "specialization": "Manager"
 
 
