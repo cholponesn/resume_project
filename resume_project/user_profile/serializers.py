@@ -15,4 +15,8 @@ class RegisterSerializer(serializers.ModelSerializer):
         model = User
         fields = ['username','password']
 
+class LoginSerializer(serializers.Serializer):
+    username = serializers.CharField(min_length=5)
+    password = serializers.CharField()
+
 
