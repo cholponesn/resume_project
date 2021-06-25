@@ -26,14 +26,6 @@ class LoginView(APIView):
             return Response('welcome')
         return Response(serializer.errors)
 
-    def put(self, request):
-        profile = Profile.objects.get(user=request.user)
-        serializer = ProfileSerializer(profile, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response('OK', status=200)
-        return Response(serializer.errors, status=400)
-
 
 
 
