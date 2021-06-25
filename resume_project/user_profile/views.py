@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,5 +12,29 @@ class RegisterView(APIView):
             serializer.save()
             return Response('Successfuly register!', status=201)
         return Response(serializer.errors, status=400)
+
+class LoginView(APIView):
+
+    def post(self,request):
+        serializer = LoginSerializer(data=request.data)
+        if serializer.is_valid():
+            username = serializer.data.get('username')
+            password = serializer.data.get('password')
+            user = authenticate(username=username,password=password)
+            login(request,user)
+
+            return Response('welcome')
+        return Response(serializer.errors)
+
+    def put(self, request):
+        profile = Profile.objects.get(user=request.user)
+        serializer = ProfileSerializer(profile, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response('OK', status=200)
+        return Response(serializer.errors, status=400)
+
+
+
 
 
